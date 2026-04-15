@@ -68,6 +68,30 @@ $r \approx 3.5699$ to expose the self-similarity.
 
 ---
 
+## Kirkwood gaps — chaos in the asteroid belt
+
+![kirkwood gaps](docs/animations/kirkwood.gif)
+
+1200 massless test particles seeded uniformly in semi-major axis across
+the main belt, integrated under the planar circular restricted three-body
+problem (Sun + Jupiter, test particles massless). As simulation time
+advances, resonance-driven chaos pumps eccentricities at the
+mean-motion-resonance locations with Jupiter and gaps carve themselves
+out of the histogram — the mechanism Wisdom (1982) identified for the
+3:1 Kirkwood gap. Visible here at the 3:1 (≈2.50 AU) and 2:1 (≈3.28 AU)
+resonances, with partial depletion at 5:2 and 7:3.
+
+Jupiter's mass is inflated by 15× in this run so the effect shows up in
+~3000 yr instead of the ~10⁴–10⁶ yr required at the real value — a
+didactic acceleration, not a claim about the real solar system. The
+resonance locations themselves (set by $a_\text{res} = a_J (q/p)^{2/3}$)
+are independent of Jupiter's mass.
+
+Integration is RK4 at $\Delta t = 0.08$ yr, vectorized over all 1200
+particles; units are AU and years so that $G M_\odot = 4\pi^2$.
+
+---
+
 ## Reproduce
 
 ```bash
@@ -77,6 +101,7 @@ pip install -e .
 python -m chaos_playground.double_pendulum.render
 python -m chaos_playground.lorenz.render
 python -m chaos_playground.logistic.render
+python -m chaos_playground.kirkwood.render
 ```
 
 Each command regenerates its corresponding GIF in `docs/animations/`.
@@ -95,13 +120,15 @@ chaos_playground/
 ├── shared/integrator.py        RK4, reused by pendulum + Lorenz
 ├── double_pendulum/            Lagrangian ODE + render
 ├── lorenz/                     Lorenz 1963 ODE + rotating 3D render
-└── logistic/                   Map iterator + progressive-zoom render
+├── logistic/                   Map iterator + progressive-zoom render
+└── kirkwood/                   Planar CR3BP + gap-emergence histogram
 ```
 
 ## References
 
 - Lorenz, E. N. (1963). *Deterministic Nonperiodic Flow.* J. Atmos. Sci. 20, 130–141.
 - May, R. M. (1976). *Simple mathematical models with very complicated dynamics.* Nature 261, 459–467.
+- Wisdom, J. (1982). *The origin of the Kirkwood gaps: a mapping for asteroidal motion near the 3/1 commensurability.* AJ 87, 577–593.
 - Goldstein, Poole, Safko. *Classical Mechanics* (3rd ed.), Ch. 1–2.
 - Strogatz, S. H. *Nonlinear Dynamics and Chaos*, Westview Press.
 
