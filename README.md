@@ -3,7 +3,7 @@
 Visual reference animations of classic chaotic dynamical systems, rendered
 with nothing but NumPy and Matplotlib.
 
-Companion repo to [hnn-double-pendulum](https://github.com/danringart/hnn-double-pendulum)
+Companion repo to [hnn-double-pendulum](https://github.com/danrixd/hnn-double-pendulum)
 (NeurIPS-paper replication on the same physical family). This one is the
 breadth — three canonical systems, three GIFs, one reproducible pipeline.
 
@@ -71,7 +71,7 @@ $r \approx 3.5699$ to expose the self-similarity.
 ## Reproduce
 
 ```bash
-git clone https://github.com/danringart/chaos-playground.git
+git clone https://github.com/danrixd/chaos-playground.git
 cd chaos-playground
 pip install -e .
 python -m chaos_playground.double_pendulum.render
