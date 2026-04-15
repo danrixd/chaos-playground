@@ -30,6 +30,21 @@ $$
 
 Integrated with a 4th-order Runge-Kutta scheme at $\Delta t = 1/600\,\text{s}$.
 
+### Same system, two regimes
+
+![double pendulum: regular vs chaotic](docs/animations/double_pendulum_regimes.gif)
+
+Identical physics, only the initial angles change. On the left, both
+angles start near $0.3$ rad — the small-oscillation limit where the
+double pendulum is nearly integrable and the motion is a quasi-periodic
+beating of the two normal modes; the bob traces a tidy Lissajous-like
+arc. On the right, both angles start near $2.6$ rad — above the
+flip-over threshold, the system is genuinely chaotic and the bob fills
+a tangled region of configuration space. The total energies printed in
+each panel are computed from the Lagrangian $E = T + V$ of the
+double pendulum at $t = 0$ and are conserved by RK4 to within a few
+parts per million over the ~14 s window.
+
 ---
 
 ## Lorenz attractor — the original butterfly
@@ -99,6 +114,7 @@ git clone https://github.com/danrixd/chaos-playground.git
 cd chaos-playground
 pip install -e .
 python -m chaos_playground.double_pendulum.render
+python -m chaos_playground.double_pendulum.render_regimes
 python -m chaos_playground.lorenz.render
 python -m chaos_playground.logistic.render
 python -m chaos_playground.kirkwood.render
